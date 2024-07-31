@@ -1,0 +1,16 @@
+extend type Query{
+  swapiCharacterById(id: ID!): StarWarsCharacter!
+}
+
+type StarWarsCharacter {
+  name: String
+  height: String
+  mass: String
+  gender: Gender
+}
+
+enum Gender {
+  MALE
+  FEMALE
+}
+

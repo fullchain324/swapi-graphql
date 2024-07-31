@@ -1,6 +1,4 @@
-# GraphQL Tech Screen Project. 
-
-# Getting Started. 
+ # Getting Started. 
 This challenge is designed to emulate the daily activities of a person writing a graphQL middle layer that sits between a client and a REST api. This layer is used to transform and abstract the underlying systems to create contracts with UIs that can be fulfilled as underlying systems change. 
 
 **Startup**
@@ -12,3 +10,5 @@ This challenge is designed to emulate the daily activities of a person writing a
     - The StarWarsCharacter is equivalant to `people` in the api
     - API documentation: https://swapi.dev/documentation#people
 5. Run a query and make sure things are all working. 
+
+
