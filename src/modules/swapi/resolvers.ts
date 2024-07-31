@@ -6,6 +6,25 @@ const SWAPI_BASE_URL = 'https://swapi.dev/api';
 
 type Args = { id: string };
 
+type People = {
+  birth_year: string;
+  eye_color: string;
+  films: string[];
+  gender: string;
+  hair_color: string;
+  height: string;
+  homeworld: string;
+  mass: string;
+  name: string;
+  skin_color: string;
+  created: Date;
+  edited: Date;
+  species: string[];
+  starships: string[];
+  url: string;
+  vehicles: string[];
+}
+
 // Define a function to fetch data from SWAPI
 const fetchFromSWAPI = async (endpoint: string) => {
   try {
@@ -26,20 +45,28 @@ const Query: Record<string, GraphQLFieldResolver<{}, Context, any>> = {
       ...characterData
     };
   },
+  
+  // Resolver for getting all characters
+  swapiCharacters: async () => {
+    const { results } = await fetchFromSWAPI('people/');
+    return results.map((character: any) => ({
+      ...character,
+    }))
+  }
 };
 
 const StarWarsCharacter = {
-  name: () => {
-    return "test";
+  name: (character: People) => {
+    return character.name;
   },
-  height: () => {
-    return "171";
+  height: (character: People) => {
+    return character.height;
   },
-  mass: () => {
-    return "100";
+  mass: (character: People) => {
+    return character.mass;
   },
-  gender: () => {
-    return "MALE";
+  gender: (character: People) => {
+    return character.gender;
   },
 };
 
